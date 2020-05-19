@@ -57,28 +57,40 @@ In order to register serverless functions, be sure to copy wsk (wsk_cli) to /usr
 		wsk action invoke sentiment -i -P declaration.json -r -v 
 
 6. Chameleon
-	wsk action create chameleon faas_chameleon.py --docker yz2297/chameleon_openwhisk --web raw -i
-	wsk action invoke sentiment -i -p rows 5 -p cols 5 --memory 1024 -r -v
+
+	wsk action create chameleon faas_chameleon.py --docker yz2297/chameleon_openwhisk --web raw -i --memory 1024
+
+	wsk action invoke chameleon -i -p rows 5 -p cols 5 -r -v
 
 7. Floating point operation
+
 	wsk action create float_op float_operation.py -i 
+
 	wsk action invoke float_op -i -p N 10 -r -v
 
 8. Image processing
+
 	wsk action create image_process image_process.py --docker yz2297/python3_openwhisk --web raw -i
 
 9. linpack
-	wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i
+
+	wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 512 -i
+
 	wsk action invoke linpack -i -p N 10 -r -v
 
 10. matmult
-	wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i
+
+	wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 512 -i
+
 	wsk action invoke matmult -i -p N 10 -r -v
 
 11. pyaes
+
 	wsk action create pyaes faas_pyaes.py --docker yz2297/pyaes_openwhisk --web raw -i
+
 	wsk action invoke pyaes -i -p length 10 -p iteration 10 -r -v
 
 12. video_processing
+
 	wsk action create video_process video_process.py --docker yz2297/video_process_openwhisk --web raw -i
 
