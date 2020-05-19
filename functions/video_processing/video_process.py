@@ -1,6 +1,8 @@
 import cv2
 from time import time
 import base64
+import io
+import numpy as np
 
 def video_processing(video_name, video_path):
     result_file_path = '/tmp/output-'+ video_name
@@ -19,8 +21,9 @@ def video_processing(video_name, video_path):
 
         if ret:
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            im = cv2.imwrite('/tmp/tmp.jpg', gray_frame)
-            gray_frame = cv2.imread('/tmp/tmp.jpg')
+            is_success, buff = cv2.imencode(".jpg", gray_frame)
+            io_buf = io.BytesIO(buff)
+            gray_frame = cv2.imdecode(np.frombuffer(io_buf.getbuffer(), np.uint8), -1)
             out.write(gray_frame)
         else:
             break
