@@ -2,6 +2,7 @@ FROM openwhisk/actionloop-python-v3.7:248efb5
 
 COPY image_process_base64 /tmp/image_process_base64
 COPY requirements.txt requirements.txt
+COPY ../mobilenet.py mobilenet.py
 
 RUN  apt-get update \
      # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
