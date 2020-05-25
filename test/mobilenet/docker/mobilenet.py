@@ -18,7 +18,7 @@ def predict(img_path):
 
 def main():
     img_dir = '/tmp/image_process_base64/'
-    for img_name in os.path.listdir(img_dir):
+    for img_name in os.listdir(img_dir):
         if 'jpg' not in img_name:
             continue
         print(img_name)
