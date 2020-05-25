@@ -1,5 +1,3 @@
-from tensorflow.python.keras.preprocessing import image
-from tensorflow.python.keras.applications.resnet50 import preprocess_input, decode_predictions
 import numpy as np
 import numpy as np
 import tensorflow as tf

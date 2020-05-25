@@ -1,5 +1,3 @@
-from tensorflow.python.keras.preprocessing import image
-from tensorflow.python.keras.applications.resnet50 import preprocess_input, decode_predictions
 import numpy as np
 import numpy as np
 import tensorflow as tf
@@ -21,6 +19,8 @@ def predict(img_path):
 def main():
     img_dir = '/tmp/image_process_base64/'
     for img_name in os.lisdir(img_dir):
+        if 'jpg' not in img_name:
+            continue
         print(img_name)
         img_path = img_dir + img_name
         with open(img_path, 'r') as f:
