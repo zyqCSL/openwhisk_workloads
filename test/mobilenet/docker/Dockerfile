@@ -2,7 +2,6 @@ FROM openwhisk/actionloop-python-v3.7:248efb5
 
 COPY image_process_base64 /tmp/image_process_base64
 COPY requirements.txt requirements.txt
-COPY mobilenet.py mobilenet.py
 
 RUN  apt-get update \
      # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
@@ -14,5 +13,7 @@ RUN  apt-get update \
      && echo "\n[mysqld]\nssl-ca=/tmp/ca.pem\nssl-cert=/tmp/server-cert.pem\nssl-key=/tmp/server-key.pem\n" >> /etc/mysql/my.cnf \
      # install additional python modules
      && pip install --upgrade pip setuptools six && pip install --no-cache-dir -r requirements.txt
+
+COPY mobilenet.py mobilenet.py
 
 CMD sleep 2h
