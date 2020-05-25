@@ -94,3 +94,9 @@ In order to register serverless functions, be sure to copy wsk (wsk_cli) to /usr
 
 	wsk action create video_process video_process.py --docker yz2297/video_process_openwhisk --web raw -i
 
+13. logistic_regression_review
+
+	wsk action create lr_review video_process.py --docker yz2297/lr_review_openwhisk --web raw -i
+
+	wsk action invoke lr_review -i -p text "Just fine" -r -v
+
