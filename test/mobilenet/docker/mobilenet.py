@@ -26,7 +26,7 @@ def main():
         with open(img_path, 'r') as f:
             img_binary = base64.b64decode(f.read())
             temp_path = '/tmp/img.jpg'
-            with open(temp_path, 'w+') as ff:
+            with open(temp_path, 'wb+') as ff:
                 ff.write(img_binary)
             print(predict(temp_path))
 

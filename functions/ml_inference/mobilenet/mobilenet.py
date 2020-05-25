@@ -19,7 +19,7 @@ def main(params):
     img_binary = base64.b64decode(params['image'])
     img_format = params['format']
     img_path = '/tmp/img.' + img_format
-    with open(img_path, 'w+') as f:
+    with open(img_path, 'wb+') as f:
         f.write(img_binary)        
     return predict(img_path)
 

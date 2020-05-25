@@ -100,3 +100,7 @@ In order to register serverless functions, be sure to copy wsk (wsk_cli) to /usr
 
 	wsk action invoke lr_review -i -p text "Just fine" -r -v
 
+13. mobilenet
+
+	wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i
+
