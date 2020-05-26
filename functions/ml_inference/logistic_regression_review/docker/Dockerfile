@@ -1,8 +1,6 @@
 FROM openwhisk/actionloop-python-v3.7:248efb5
 
 COPY requirements.txt requirements.txt
-COPY lr_model.pk /tmp/lr_model.pk
-COPY reviews20mb.csv /tmp/reviews20mb.csv
 
 RUN  apt-get update \
      # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
@@ -14,3 +12,6 @@ RUN  apt-get update \
      && echo "\n[mysqld]\nssl-ca=/tmp/ca.pem\nssl-cert=/tmp/server-cert.pem\nssl-key=/tmp/server-key.pem\n" >> /etc/mysql/my.cnf \
      # install additional python modules
      && pip install --upgrade pip setuptools six && pip install --no-cache-dir -r requirements.txt
+
+COPY lr_model.pk /tmp/lr_model.pk
+COPY reviews20mb.csv /tmp/reviews20mb.csv
