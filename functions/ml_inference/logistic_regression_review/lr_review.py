@@ -32,6 +32,7 @@ def main(params):
     latency = time() - start
 
     ret_val = {}
-    ret_val['y'] = y[0]
+    # ret_val['y'] = y[0]
     ret_val['latency'] = latency
+    
     return ret_val
