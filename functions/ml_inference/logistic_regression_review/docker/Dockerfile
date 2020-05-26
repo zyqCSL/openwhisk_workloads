@@ -2,7 +2,7 @@ FROM openwhisk/actionloop-python-v3.7:248efb5
 
 COPY requirements.txt requirements.txt
 COPY lr_model.pk /tmp/lr_model.pk
-COPY reviews10mb.csv /tmp/reviews10mb.csv
+COPY reviews20mb.csv /tmp/reviews20mb.csv
 
 RUN  apt-get update \
      # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
