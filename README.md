@@ -74,13 +74,13 @@ In order to register serverless functions, be sure to copy wsk (wsk_cli) to /usr
 
 9. linpack
 
-	wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 512 -i
+	wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i
 
 	wsk action invoke linpack -i -p N 10 -r -v
 
 10. matmult
 
-	wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 512 -i
+	wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i
 
 	wsk action invoke matmult -i -p N 10 -r -v
 
