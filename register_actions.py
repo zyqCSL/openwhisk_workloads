@@ -5,7 +5,7 @@ from pathlib import Path
 
 top_dir = Path.cwd() / 'functions'
 
-os.chdir(str(top_dir / 'autocomplete'))
+os.chdir(str(top_dir / 'chameleon'))
 cmd = 'wsk action create chameleon faas_chameleon.py --docker yz2297/chameleon_openwhisk --web raw -i --memory 512'
 subprocess.call(cmd, shell=True)
 
