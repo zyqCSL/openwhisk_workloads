@@ -18,11 +18,11 @@ cmd = 'wsk action create image_process image_process.py --docker yz2297/python3_
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'linpack'))
-cmd = 'wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i'
+cmd = 'wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 2048 -i'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'matmult'))
-cmd = 'wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i'
+cmd = 'wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 2048 -i'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'pyaes'))
@@ -38,5 +38,5 @@ cmd = 'wsk action create lr_review lr_review.py --docker yz2297/lr_review_openwh
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'ml_inference' / 'mobilenet'))
-cmd = 'wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i --memory 2048'
+cmd = 'wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i --memory 4196'
 subprocess.call(cmd, shell=True)
