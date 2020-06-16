@@ -6,7 +6,7 @@ from pathlib import Path
 top_dir = Path.cwd() / 'functions'
 
 os.chdir(str(top_dir / 'chameleon'))
-cmd = 'wsk action create chameleon faas_chameleon.py --docker yz2297/chameleon_openwhisk --web raw -i --memory 512'
+cmd = 'wsk action create chameleon faas_chameleon.py --docker yz2297/chameleon_openwhisk --web raw -i --memory 1024'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'float_operation'))
@@ -18,11 +18,11 @@ cmd = 'wsk action create image_process image_process.py --docker yz2297/python3_
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'linpack'))
-cmd = 'wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 512 -i'
+cmd = 'wsk action create linpack linpack.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'matmult'))
-cmd = 'wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 512 -i'
+cmd = 'wsk action create matmult matmult.py --docker yz2297/python3_openwhisk --web raw --memory 1024 -i'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'pyaes'))
