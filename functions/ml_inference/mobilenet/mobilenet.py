@@ -4,12 +4,16 @@ import tensorflow as tf
 import time
 import base64
 
+pretrained_model = tf.keras.applications.MobileNet()
+
 def predict(img_path):
+    global pretrained_model
+
     start = time.time()
     img = tf.keras.preprocessing.image.load_img(img_path, target_size=[224, 224])
     x = tf.keras.preprocessing.image.img_to_array(img)
     x = tf.keras.applications.mobilenet.preprocess_input(x[tf.newaxis,...])
-    pretrained_model = tf.keras.applications.MobileNet()
+    
     result = pretrained_model(x)
     ret_val = {}
     ret_val['latency'] = time.time() - start
@@ -22,4 +26,3 @@ def main(params):
     with open(img_path, 'wb+') as f:
         f.write(img_binary)        
     return predict(img_path)
-
