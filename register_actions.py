@@ -14,7 +14,7 @@ cmd = 'wsk action create float_op float_operation.py -i --memory 512'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'image_processing'))
-cmd = 'wsk action create image_process image_process.py --docker yz2297/python3_openwhisk --web raw -i --memory 512'
+cmd = 'wsk action create image_process image_process.py --docker yz2297/python3_openwhisk --web raw -i --memory 1024'
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'linpack'))
@@ -38,5 +38,5 @@ cmd = 'wsk action create lr_review lr_review.py --docker yz2297/lr_review_openwh
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'ml_inference' / 'mobilenet'))
-cmd = 'wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i --memory 512'
+cmd = 'wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i --memory 1024'
 subprocess.call(cmd, shell=True)
