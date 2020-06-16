@@ -38,5 +38,5 @@ cmd = 'wsk action create lr_review lr_review.py --docker yz2297/lr_review_openwh
 subprocess.call(cmd, shell=True)
 
 os.chdir(str(top_dir / 'ml_inference' / 'mobilenet'))
-cmd = 'wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i --memory 4196'
+cmd = 'wsk action create mobilenet mobilenet.py --docker yz2297/mobilenet_openwhisk --web raw -i --memory 8192'
 subprocess.call(cmd, shell=True)
