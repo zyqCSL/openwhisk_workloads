@@ -51,3 +51,6 @@ etcd3 == 0.10.0
 # Other required modules
 botocore == 1.15.46
 tornado == 4.5.2
+
+# MinIo to mock object store
+minio

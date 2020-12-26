@@ -1,0 +1,9 @@
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.25 --max-cpus 1.5  --cpus-step 0.25 --users 1 --function chameleon     --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.5  --max-cpus 5.0  --cpus-step 0.5  --users 1 --function video_process --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.25 --max-cpus 2.0  --cpus-step 0.25 --users 1 --function image_process --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.25 --max-cpus 3.0  --cpus-step 0.25 --users 1 --function mobilenet     --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 3.0  --max-cpus 39.0 --cpus-step 3.0  --users 1 --function linpack       --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 3.0  --max-cpus 15.0 --cpus-step 3.0  --users 1 --function matmult       --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.25 --max-cpus 1.5  --cpus-step 0.25 --users 1 --function pyaes         --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.25 --max-cpus 1.0  --cpus-step 0.25 --users 1 --function float_op      --iat 1
+python3 ./zz_profile_cpu_limit.py --min-cpus 0.25 --max-cpus 2.0  --cpus-step 0.25 --users 1 --function lr_review     --iat 1
