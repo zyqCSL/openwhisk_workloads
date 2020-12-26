@@ -2,7 +2,6 @@
 import cv2
 from time import time
 from minio import Minio
-import base64
 import io
 import numpy as np
 import os
