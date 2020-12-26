@@ -8,6 +8,12 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--minio-config', dest='minio_config', type=str, required=True)
+# data_top_dir =  Path.home() / 'openwhisk_workloads' / 'openwhisk_locust' / 'faas_data'
+data_top_dir =  Path.cwd() / '..' / 'openwhisk_locust' / 'faas_data'
+image_dir = data_top_dir / 'image_process'
+video_dir = data_top_dir / 'video_process'
+tmp_dir = Path.cwd() / 'tmp'
+os.makedirs(str(tmp_dir), exist_ok=True)
 # -----------------------------------------------------------------------
 # parse args
 # -----------------------------------------------------------------------
@@ -33,3 +39,15 @@ else:
     objects = minio_client.list_objects(bucket_name=bucket_name)
     for obj in objects:
         print(obj)
+
+for img in os.listdir(str(image_dir)):
+    minio_client.fget_object(bucket_name=bucket_name,
+                       object_name=img,
+                       file_path=str(tmp_dir / img))
+
+for vid in os.listdir(str(video_dir)):
+    minio_client.fget_object(bucket_name=bucket_name,
+                       object_name=vid,
+                       file_path=str(tmp_dir / vid))
+
+    
