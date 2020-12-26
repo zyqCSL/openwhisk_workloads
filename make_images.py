@@ -36,9 +36,9 @@ def copy_images(src, targ, copies):
         subprocess.run(cmd, shell=True)
 
 copy_images(src='chameleon_openwhisk', targ='chameleon_openwhisk', copies=copies)
-copy_images(src='python3_openwhisk', targ='image_processing', copies=copies)
-copy_images(src='python3_openwhisk', targ='matmult', copies=copies)
-copy_images(src='python3_openwhisk', targ='linpack', copies=copies)
+copy_images(src='python3_openwhisk', targ='image_processing_openwhisk', copies=copies)
+copy_images(src='python3_openwhisk', targ='matmult_openwhisk', copies=copies)
+copy_images(src='python3_openwhisk', targ='linpack_openwhisk', copies=copies)
 copy_images(src='pyaes_openwhisk', targ='pyaes_openwhisk', copies=copies)
 copy_images(src='video_process_openwhisk', targ='video_process_openwhisk', copies=copies)
 copy_images(src='lr_review_openwhisk', targ='lr_review_openwhisk', copies=copies)

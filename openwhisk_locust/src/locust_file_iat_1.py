@@ -13,14 +13,6 @@ random.seed(time.time())
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-data_dir  = Path('/mnt/faas_data')    # for docker usage
-image_dir = data_dir / 'image_process_base64'
-video_dir = data_dir / 'video_process_base64'
-
-image_data = {}
-image_names = []
-mobilenet_names = []
-
 # logging.basicConfig(level=logging.INFO,
 #                     # filename='/mnt/locust_log/locust_openwhisk_log.txt',
 #                     # filemode='w+',
@@ -28,20 +20,27 @@ mobilenet_names = []
 
 logging.basicConfig(level=logging.INFO)
 
+# minio config
+minio_config = {}
+minio_config_p = Path('/mnt/minio_config.json')
+with open(str(minio_config_p), 'r') as f:
+    minio_config = json.load(f)
+minio_endpoint = minio_config['endpoint']
+minio_access_key = minio_config['access_key']
+minio_secret_key = minio_config['secret_key']
+minio_bucket = minio_config['bucket']
+
+data_dir  = Path('/mnt/faas_data')    # for docker usage
+image_dir = data_dir / 'image_process'
+video_dir = data_dir / 'video_process'
+
+image_names = []
 for img in os.listdir(str(image_dir)):
-    full_path = image_dir / img
     image_names.append(img)
-    with open(str(full_path), 'r') as f:
-        image_data[img] = f.read()
 
-video_data = {}
 video_names = []
-
 for video in os.listdir(str(video_dir)):
-    full_path = video_dir / video
     video_names.append(video)
-    with open(str(full_path), 'r') as f:
-        video_data[video] = f.read()
 
 # get through: wsk -i  property get --auth
 auth_str = '23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP'
@@ -79,14 +78,23 @@ class OpenWhiskUser(HttpUser):
     @task
     @tag('image_process')
     def image_process(self):
+        global minio_endpoint
+        global minio_access_key
+        global minio_secret_key
+        global minio_bucket
+
         params = {}
+        params['endpoint'] = minio_endpoint
+        params['access_key'] = minio_access_key
+        params['secret_key'] = minio_secret_key
+        params['bucket'] = minio_bucket
         # params['blocking'] = 'true'
         # params['result'] = 'true'
 
         url = '/api/v1/namespaces/_/actions/image_process'
         img = random.choice(image_names)
         body = {}
-        body['image'] = image_data[img]
+        body['image'] = img
 
         r = self.client.post(url, params=params,
             json=body, auth=auth, verify=False,
@@ -104,15 +112,23 @@ class OpenWhiskUser(HttpUser):
     @task
     @tag('mobilenet')
     def mobilenet(self):
+        global minio_endpoint
+        global minio_access_key
+        global minio_secret_key
+        global minio_bucket
+
         params = {}
+        params['endpoint'] = minio_endpoint
+        params['access_key'] = minio_access_key
+        params['secret_key'] = minio_secret_key
+        params['bucket'] = minio_bucket
         # params['blocking'] = 'true'
         # params['result'] = 'true'
 
         url = '/api/v1/namespaces/_/actions/mobilenet'
         img = random.choice(image_names)
         body = {}
-        body['image'] = image_data[img]
-        body['format'] = img.split('.')[-1]
+        body['image'] = img
 
         r = self.client.post(url, params=params,
             json=body, auth=auth, verify=False,
@@ -130,7 +146,16 @@ class OpenWhiskUser(HttpUser):
     @task
     @tag('video_process')
     def video_process(self):
+        global minio_endpoint
+        global minio_access_key
+        global minio_secret_key
+        global minio_bucket
+
         params = {}
+        params['endpoint'] = minio_endpoint
+        params['access_key'] = minio_access_key
+        params['secret_key'] = minio_secret_key
+        params['bucket'] = minio_bucket
         # params['blocking'] = 'true'
         # params['result'] = 'true'
 
@@ -138,8 +163,7 @@ class OpenWhiskUser(HttpUser):
 
         video = random.choice(video_names)
         body = {}
-        body['video'] = video_data[video]
-        body['video_name'] = video
+        body['video'] = video
 
         r = self.client.post(url, params=params,
             json=body, auth=auth, verify=False,

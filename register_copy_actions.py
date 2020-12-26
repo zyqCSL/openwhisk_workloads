@@ -31,7 +31,7 @@ subprocess.call(cmd, shell=True)
 # subprocess.call(cmd, shell=True)
 register_copy_function(func_dir = top_dir / 'image_processing', 
     func_prefix='image_process', func_src='image_process.py',
-    image_prefix='sailresearch/image_processing', copies=copies, 
+    image_prefix='sailresearch/image_processing_openwhisk', copies=copies, 
     memory_mb=512)
 
 # os.chdir(str(top_dir / 'linpack'))
@@ -39,7 +39,7 @@ register_copy_function(func_dir = top_dir / 'image_processing',
 # subprocess.call(cmd, shell=True)
 register_copy_function(func_dir = top_dir / 'linpack', 
     func_prefix='linpack', func_src='linpack.py',
-    image_prefix='sailresearch/linpack', copies=copies, 
+    image_prefix='sailresearch/linpack_openwhisk', copies=copies, 
     memory_mb=512)
 
 # os.chdir(str(top_dir / 'matmult'))
@@ -47,7 +47,7 @@ register_copy_function(func_dir = top_dir / 'linpack',
 # subprocess.call(cmd, shell=True)
 register_copy_function(func_dir = top_dir / 'matmult', 
     func_prefix='matmult', func_src='matmult.py',
-    image_prefix='sailresearch/matmult', copies=copies, 
+    image_prefix='sailresearch/matmult_openwhisk', copies=copies, 
     memory_mb=512)
 
 # os.chdir(str(top_dir / 'pyaes'))
