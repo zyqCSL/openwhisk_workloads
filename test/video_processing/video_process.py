@@ -36,7 +36,7 @@ def video_processing(video_name, video_path):
     out.release()
     return latency, result_file_path
 
-def main(params):
+def main():
     # endpoint = params['endpoint']
     # access_key = params['access_key']
     # secret_key = params['secret_key']
@@ -54,7 +54,7 @@ def main(params):
     if not found:
         print("Bucket '%s' does not exist" %bucket)
     
-    video_dir = '/tmp/faas_data/video_process/'
+    video_dir = '/tmp/faas_data/video_process'
 
     for video_name in os.listdir(video_dir):
         video_path = '/tmp/' + video_name
@@ -68,3 +68,6 @@ def main(params):
         ret_val = {}
         ret_val['latency'] = latency
         print('%s done' %video_name)
+
+if __name__ == '__main__':
+    main()
