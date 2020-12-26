@@ -4,6 +4,7 @@ from minio import Minio
 import base64
 import io
 import numpy as np
+import os
 
 def video_processing(video_name, video_path):
     result_file_path = '/tmp/output-'+ video_name
@@ -36,10 +37,14 @@ def video_processing(video_name, video_path):
     return latency, result_file_path
 
 def main(params):
-    endpoint = params['endpoint']
-    access_key = params['access_key']
-    secret_key = params['secret_key']
-    bucket = params['params']
+    # endpoint = params['endpoint']
+    # access_key = params['access_key']
+    # secret_key = params['secret_key']
+    # bucket = params['params']
+    endpoint = 'localhost:9001'
+    access_key = '5VCTEQOQ0GR0NV1T67GN'
+    secret_key = '8MBK5aJTR330V1sohz4n1i7W5Wv/jzahARNHUzi3'
+    bucket = 'openwhisk'
 
     minio_client = Minio(endpoint=endpoint,
                      access_key=access_key,
@@ -48,16 +53,18 @@ def main(params):
     found = minio_client.bucket_exists(bucket)
     if not found:
         print("Bucket '%s' does not exist" %bucket)
+    
+    video_dir = '/tmp/faas_data/video_process/'
 
-    video_name = params['video_name']
-    video_path = '/tmp/' + video_name
+    for video_name in os.listdir(video_dir):
+        video_path = '/tmp/' + video_name
 
-    minio_client.fget_object(bucket_name=bucket,
-                       object_name=video_name,
-                       file_path=video_path)
+        minio_client.fget_object(bucket_name=bucket,
+                        object_name=video_name,
+                        file_path=video_path)
 
-    latency, _ = video_processing(video_name, video_path)
+        latency, _ = video_processing(video_name, video_path)
 
-    ret_val = {}
-    ret_val['latency'] = latency
-    return ret_val
+        ret_val = {}
+        ret_val['latency'] = latency
+        print('%s done' %video_name)
