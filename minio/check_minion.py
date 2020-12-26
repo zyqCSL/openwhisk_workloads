@@ -30,4 +30,6 @@ if not found:
     print("Bucket '%s' does not exist" %bucket_name)
 else:
     print("Bucket '%s' already exists" %bucket_name)
-    print(minio_client.list_objects(bucket_name=bucket_name))
+    objects = minio_client.list_objects(bucket_name=bucket_name)
+    for obj in objects:
+        print(obj)
