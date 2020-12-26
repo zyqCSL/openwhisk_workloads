@@ -49,7 +49,7 @@ def main(params):
     if not found:
         print("Bucket '%s' does not exist" %bucket)
 
-    video_name = params['video_name']
+    video_name = params['video']
     video_path = '/tmp/' + video_name
 
     minio_client.fget_object(bucket_name=bucket,

@@ -1,6 +1,7 @@
 FROM openwhisk/actionloop-python-v3.7:248efb5
 
-COPY image_process_base64 /tmp/image_process_base64
+COPY mobilenet.py /tmp/mobilenet.py
+COPY faas_data/ /tmp/faas_data
 COPY requirements.txt requirements.txt
 
 RUN  apt-get update \

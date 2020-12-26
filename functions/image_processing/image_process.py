@@ -1,6 +1,5 @@
 from PIL import Image, ImageFilter
 from time import time
-import base64
 import io
 from minio import Minio
 

@@ -1,9 +1,8 @@
 import numpy as np
-import numpy as np
 import tensorflow as tf
 import time
-import base64
 import os
+from minio import Minio
 
 def predict(img_path):
     start = time.time()
@@ -17,18 +16,31 @@ def predict(img_path):
     return ret_val
 
 def main():
-    img_dir = '/tmp/image_process_base64/'
+    # endpoint = params['endpoint']
+    # access_key = params['access_key']
+    # secret_key = params['secret_key']
+    # bucket = params['params']
+    endpoint = '128.253.128.68:9001'
+    access_key = '5VCTEQOQ0GR0NV1T67GN'
+    secret_key = '8MBK5aJTR330V1sohz4n1i7W5Wv/jzahARNHUzi3'
+    bucket = 'openwhisk'
+
+    minio_client = Minio(endpoint=endpoint,
+                     access_key=access_key,
+                     secret_key=secret_key,
+                     secure=False)
+    found = minio_client.bucket_exists(bucket)
+    if not found:
+        print("Bucket '%s' does not exist" %bucket)
+    
+    img_dir = '/tmp/faas_data/image_process/'
+
     for img_name in os.listdir(img_dir):
         if 'jpg' not in img_name:
             continue
         print(img_name)
         img_path = img_dir + img_name
-        with open(img_path, 'r') as f:
-            img_binary = base64.b64decode(f.read())
-            temp_path = '/tmp/img.jpg'
-            with open(temp_path, 'wb+') as ff:
-                ff.write(img_binary)
-            print(predict(temp_path))
+        print(predict(img_path))
 
 if __name__ == '__main__':
     main()

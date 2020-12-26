@@ -1,8 +1,7 @@
 import numpy as np
-import numpy as np
 import tensorflow as tf
 import time
-import base64
+from minio import Minio
 
 def predict(img_path):
     global pretrained_model
@@ -19,9 +18,24 @@ def predict(img_path):
     return ret_val
 
 def main(params):
-    img_binary = base64.b64decode(params['image'])
-    img_format = params['format']
-    img_path = '/tmp/img.' + img_format
-    with open(img_path, 'wb+') as f:
-        f.write(img_binary)        
+    endpoint = params['endpoint']
+    access_key = params['access_key']
+    secret_key = params['secret_key']
+    bucket = params['bucket']
+
+    minio_client = Minio(endpoint=endpoint,
+                     access_key=access_key,
+                     secret_key=secret_key,
+                     secure=False)
+    found = minio_client.bucket_exists(bucket)
+    if not found:
+        print("Bucket '%s' does not exist" %bucket)
+
+    img_name = params['image']
+    img_path = '/tmp/' + img_name
+
+    minio_client.fget_object(bucket_name=bucket,
+                       object_name=img_name,
+                       file_path=img_path)
+     
     return predict(img_path)
