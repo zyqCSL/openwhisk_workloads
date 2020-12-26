@@ -1,3 +1,4 @@
+#  docker run -i test_video_process bash
 import cv2
 from time import time
 from minio import Minio
