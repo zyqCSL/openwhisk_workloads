@@ -23,6 +23,10 @@ with open(minio_config_f ,'r') as f:
     access_key = minio_config['access_key']
     secrete_key = minio_config['secret_key']
 
+# deploy minio
+cmd = 'docker-compose -f docker-compose.yml up -d'
+subprocess.run(cmd, shell=True)
+
 minio_client = Minio(endpoint=endpoint,
                      access_key=access_key,
                      secret_key=secrete_key,
