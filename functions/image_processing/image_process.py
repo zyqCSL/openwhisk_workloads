@@ -2,6 +2,7 @@ from PIL import Image, ImageFilter
 from time import time
 import base64
 import io
+from minio import Minio
 
 def flip(image):
     img_1 = image.transpose(Image.FLIP_LEFT_RIGHT)
@@ -29,13 +30,27 @@ def resize(image):
     return img
 
 def main(params):
-    img_binary = base64.b64decode(params['image'])
+    endpoint = params['endpoint']
+    access_key = params['access_key']
+    secret_key = params['secret_key']
+    bucket = params['bucket']
 
-    tempBuff = io.BytesIO()
-    tempBuff.write(img_binary)
-    tempBuff.flush()
+    minio_client = Minio(endpoint=endpoint,
+                     access_key=access_key,
+                     secret_key=secret_key,
+                     secure=False)
+    found = minio_client.bucket_exists(bucket)
+    if not found:
+        print("Bucket '%s' does not exist" %bucket)
+    
+    image_name = params['image']
+    image_path = '/tmp/' + image_name
+
+    minio_client.fget_object(bucket_name=bucket,
+                       object_name=image_name,
+                       file_path=image_path)
     # tempBuff.seek(0) #need to jump back to the beginning before handing it off to PIL
-    image = Image.open(tempBuff)
+    image = Image.open(image_path)
     if image.mode != 'RGB':
         image = image.convert('RGB')
 

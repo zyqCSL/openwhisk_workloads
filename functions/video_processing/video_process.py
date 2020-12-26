@@ -39,7 +39,7 @@ def main(params):
     endpoint = params['endpoint']
     access_key = params['access_key']
     secret_key = params['secret_key']
-    bucket = params['params']
+    bucket = params['bucket']
 
     minio_client = Minio(endpoint=endpoint,
                      access_key=access_key,
