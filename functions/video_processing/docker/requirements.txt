@@ -54,3 +54,6 @@ tornado == 4.5.2
 
 # opencv
 opencv-python
+
+# MinIo to mock object store
+minio

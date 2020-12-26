@@ -5,27 +5,27 @@ from pathlib import Path
 
 copies = 20
 
-def change_image_org(img_name):
-    cmd = 'docker pull  yz2297/%s:latest' %img_name
-    subprocess.run(cmd, shell=True)
+# def change_image_org(img_name):
+#     cmd = 'docker pull  yz2297/%s:latest' %img_name
+#     subprocess.run(cmd, shell=True)
 
-    cmd = 'docker tag yz2297/%s sailresearch/%s' %(img_name, img_name)
-    subprocess.run(cmd, shell=True)
+#     cmd = 'docker tag yz2297/%s sailresearch/%s' %(img_name, img_name)
+#     subprocess.run(cmd, shell=True)
 
-    cmd = 'docker push sailresearch/%s' %img_name
-    subprocess.run(cmd, shell=True)
+#     cmd = 'docker push sailresearch/%s' %img_name
+#     subprocess.run(cmd, shell=True)
 
-images = [
-    'chameleon_openwhisk',
-    'python3_openwhisk',
-    'pyaes_openwhisk',
-    'video_process_openwhisk',
-    'lr_review_openwhisk',
-    'mobilenet_openwhisk'
-]
+# images = [
+#     'chameleon_openwhisk',
+#     'python3_openwhisk',
+#     'pyaes_openwhisk',
+#     'video_process_openwhisk',
+#     'lr_review_openwhisk',
+#     'mobilenet_openwhisk'
+# ]
 
-for img in images:
-    change_image_org(img)
+# for img in images:
+#     change_image_org(img)
 
 def copy_images(src, targ, copies):
     for i in range(0, copies):
