@@ -13,4 +13,4 @@ minio:
   volumes:
     - ~/tmp/openwhisk/minio:/data:rw
   ports:
-    - "9001:9000"
+    - "9002:9000"
