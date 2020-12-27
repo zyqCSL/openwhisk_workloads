@@ -5,5 +5,5 @@
 test-video-process:
   image: sailresearch/video_process_openwhisk
   volumes:
-    - ./video_processing:/tmp/video_processing
+    - $PWD/video_processing:/tmp/video_processing
   entrypoint: sleep 2h

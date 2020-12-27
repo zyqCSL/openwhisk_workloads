@@ -5,5 +5,5 @@
 test-mobilenet:
   image: sailresearch/mobilenet_openwhisk
   volumes:
-    - ./mobilenet:/tmp/mobilenet
+    - $PWD/mobilenet:/tmp/mobilenet
   entrypoint: sleep 2h
