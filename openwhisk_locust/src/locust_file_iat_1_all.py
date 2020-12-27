@@ -88,10 +88,7 @@ class OpenWhiskUser(HttpUser):
         global minio_bucket
 
         params = {}
-        params['endpoint'] = minio_endpoint
-        params['access_key'] = minio_access_key
-        params['secret_key'] = minio_secret_key
-        params['bucket'] = minio_bucket
+        
         # params['blocking'] = 'true'
         # params['result'] = 'true'
 
@@ -102,6 +99,10 @@ class OpenWhiskUser(HttpUser):
         img = random.choice(image_names)
         body = {}
         body['image'] = img
+        body['endpoint'] = minio_endpoint
+        body['access_key'] = minio_access_key
+        body['secret_key'] = minio_secret_key
+        body['bucket'] = minio_bucket
 
         r = self.client.post(url, params=params,
             json=body, auth=auth, verify=False,
@@ -124,11 +125,8 @@ class OpenWhiskUser(HttpUser):
         global minio_access_key
         global minio_secret_key
         global minio_bucket
+
         params = {}
-        params['endpoint'] = minio_endpoint
-        params['access_key'] = minio_access_key
-        params['secret_key'] = minio_secret_key
-        params['bucket'] = minio_bucket
         # params['blocking'] = 'true'
         # params['result'] = 'true'
 
@@ -139,6 +137,10 @@ class OpenWhiskUser(HttpUser):
         img = random.choice(image_names)
         body = {}
         body['image'] = img
+        body['endpoint'] = minio_endpoint
+        body['access_key'] = minio_access_key
+        body['secret_key'] = minio_secret_key
+        body['bucket'] = minio_bucket
 
         r = self.client.post(url, params=params,
             json=body, auth=auth, verify=False,
@@ -161,11 +163,8 @@ class OpenWhiskUser(HttpUser):
         global minio_access_key
         global minio_secret_key
         global minio_bucket
+        
         params = {}
-        params['endpoint'] = minio_endpoint
-        params['access_key'] = minio_access_key
-        params['secret_key'] = minio_secret_key
-        params['bucket'] = minio_bucket
         # params['blocking'] = 'true'
         # params['result'] = 'true'
 
@@ -176,6 +175,10 @@ class OpenWhiskUser(HttpUser):
         video = random.choice(video_names)
         body = {}
         body['video'] = video
+        body['endpoint'] = minio_endpoint
+        body['access_key'] = minio_access_key
+        body['secret_key'] = minio_secret_key
+        body['bucket'] = minio_bucket
 
         r = self.client.post(url, params=params,
             json=body, auth=auth, verify=False,
