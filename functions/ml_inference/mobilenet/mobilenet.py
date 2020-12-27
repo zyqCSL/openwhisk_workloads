@@ -4,8 +4,6 @@ import time
 from minio import Minio
 
 def predict(img_path):
-    global pretrained_model
-
     start = time.time()
     img = tf.keras.preprocessing.image.load_img(img_path, target_size=[224, 224])
     x = tf.keras.preprocessing.image.img_to_array(img)
