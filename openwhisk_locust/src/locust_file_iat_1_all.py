@@ -57,7 +57,7 @@ lr_review_words = ["fine", "fancy", "food", "good", "so so",
 mean_iat = 1  # seconds
 intervals = np.random.exponential(scale=mean_iat, size=5000)
 
-function_copies = 20
+function_copies = 50
 
 def compose_lr_review_text():
     global lr_review_words

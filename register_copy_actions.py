@@ -5,7 +5,7 @@ from pathlib import Path
 
 top_dir = Path.cwd() / 'functions'
 
-copies = 20
+copies = 50
 
 def register_copy_function(func_dir, func_prefix, func_src, image_prefix, copies, memory_mb):
     os.chdir(str(func_dir))

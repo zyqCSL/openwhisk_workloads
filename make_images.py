@@ -3,7 +3,7 @@ import os
 import subprocess
 from pathlib import Path
 
-copies = 20
+copies = 50
 
 # def change_image_org(img_name):
 #     cmd = 'docker pull  yz2297/%s:latest' %img_name
