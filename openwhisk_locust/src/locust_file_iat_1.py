@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.INFO)
 
 # minio config
 minio_config = {}
-minio_config_p = Path('/mnt/minio_config.json')
+minio_config_p = Path('/mnt/faas_data/minio_config.json')
 with open(str(minio_config_p), 'r') as f:
     minio_config = json.load(f)
 minio_endpoint = minio_config['endpoint']
