@@ -36,10 +36,12 @@ def main():
     img_dir = '/tmp/faas_data/image_process/'
 
     for img_name in os.listdir(img_dir):
-        if 'jpg' not in img_name:
-            continue
         print(img_name)
-        img_path = img_dir + img_name
+        img_path = '/tmp/' + img_name
+        minio_client.fget_object(bucket_name=bucket,
+            object_name=img_name,
+            file_path=img_path)
+        print('minio fetch %s' %img_name)
         print(predict(img_path))
 
 if __name__ == '__main__':
