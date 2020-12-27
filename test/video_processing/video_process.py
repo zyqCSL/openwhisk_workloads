@@ -1,3 +1,4 @@
+# docker build -f Dockerfile -t test_video_process .
 import cv2
 from time import time
 from minio import Minio

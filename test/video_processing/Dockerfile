@@ -14,7 +14,6 @@ RUN  apt-get update \
      # We need to add some dummy entries to /etc/mysql/my.cnf to sattisfy vulnerability checking of it.
      && echo "\n[mysqld]\nssl-ca=/tmp/ca.pem\nssl-cert=/tmp/server-cert.pem\nssl-key=/tmp/server-key.pem\n" >> /etc/mysql/my.cnf \
      # install additional python modules
-     && pip install --upgrade pip setuptools six && pip install --no-cache-dir -r requirements.txt \
-     && pip3 install --no-cache-dir -r requirements.txt
+     && pip install --upgrade pip setuptools six && pip install --no-cache-dir -r requirements.txt
 
 CMD sleep 2h
