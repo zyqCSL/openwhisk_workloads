@@ -1,4 +1,6 @@
 # docker build -f Dockerfile -t test_video_process .
+# docker run -v video_processing:/tmp/video_processing -d sailresearch/video_process_openwhisk sleep 2h
+# docker exec -it <mycontainer> bash
 import cv2
 from time import time
 from minio import Minio
