@@ -29,11 +29,11 @@ def main(params):
     if not found:
         print("Bucket '%s' does not exist" %bucket)
 
-    img_name = params['image']
-    img_path = '/tmp/' + img_name
+    image_name = params['image']
+    image_path = '/tmp/' + image_name
 
     minio_client.fget_object(bucket_name=bucket,
-                       object_name=img_name,
-                       file_path=img_path)
+                       object_name=image_name,
+                       file_path=image_path)
      
-    return predict(img_path)
+    return predict(image_path)

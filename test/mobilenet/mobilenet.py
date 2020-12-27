@@ -20,7 +20,7 @@ def main():
     # access_key = params['access_key']
     # secret_key = params['secret_key']
     # bucket = params['params']
-    endpoint = '128.253.128.68:9001'
+    endpoint = '128.253.128.68:9002'
     access_key = '5VCTEQOQ0GR0NV1T67GN'
     secret_key = '8MBK5aJTR330V1sohz4n1i7W5Wv/jzahARNHUzi3'
     bucket = 'openwhisk'

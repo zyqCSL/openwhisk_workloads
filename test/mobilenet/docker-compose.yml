@@ -3,7 +3,7 @@
 # Minio is used to mock an object storage ( i.e. S3) that hosts the api-gateway configuration.
 # Minio also exposes a web UI to browse the files: http://localhost:9001/minio/api-gateway/
 test-mobilenet:
-  image: sailresearch/mobilenet_openwhisk
+  image: sailresearch/mobilenet_openwhisk:latest
   volumes:
     - $PWD/mobilenet:/tmp/mobilenet
   entrypoint: sleep 2h
