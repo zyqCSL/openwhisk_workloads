@@ -20,5 +20,5 @@ register_copy_function(func_dir = top_dir / 'synthetic',
     memory_mb=256)
 
 os.chdir(str(top_dir / 'synthetic'))
-cmd = 'wsk action create synthetic synthetic.py -i --memory 256'
+cmd = 'wsk action create synthetic synthetic.py --docker sailresearch/python3_openwhisk -i --memory 256'
 subprocess.call(cmd, shell=True)

@@ -1,0 +1,26 @@
+# USERS=12 EXP_TIME=120s docker-compose -f docker-compose-serverless-mix.yml up --scale worker=4
+version: '3'
+
+services:
+  master:
+    image: yz2297/locust_openwhisk
+    # ports:
+    #  - "8089:8089"
+    network_mode: host
+    volumes:
+      - $PWD/src:/mnt/locust
+      - $HOME/openwhisk_locust_log:/mnt/locust_log
+      - $PWD/faas_data:/mnt/faas_data
+      - $PWD/minio_config.json:/mnt/minio_config.json
+    command: -f /mnt/locust/locust_file_iat_10_synthetic.py --master --csv=/mnt/locust_log/mixed --headless --host https://172.17.0.1 --users ${USERS} -t ${EXP_TIME} --logfile /mnt/locust_log/locust_openwhisk_log.txt
+  
+  worker:
+    image: yz2297/locust_openwhisk
+    volumes:
+      - $PWD/src:/mnt/locust
+      - $HOME/openwhisk_locust_log:/mnt/locust_log
+      - $PWD/faas_data:/mnt/faas_data
+      - $PWD/minio_config.json:/mnt/minio_config.json
+    network_mode: "host"
+    # command: -f /mnt/locust/socialml_rps_10.py --worker --master-host master
+    command: -f /mnt/locust/locust_file_iat_10_synthetic.py --worker
