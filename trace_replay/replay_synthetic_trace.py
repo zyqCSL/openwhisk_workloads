@@ -118,4 +118,6 @@ for worker in worker_traces:
 logging.info("#------------- Experiment started -------------#")
 for thread in threads:
     thread.start()
+for thread in threads:
+    thread.join()
 logging.info("#------------- Experiment ended -------------#")
