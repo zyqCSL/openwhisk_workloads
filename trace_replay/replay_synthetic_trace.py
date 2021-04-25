@@ -81,7 +81,7 @@ def http_worker(worker_trace, base_url, auth, exp_time):
     start_time = time.time()
     for inv in worker_trace:
         cur_time = time.time() - start_time
-        if cur_time > exp_time:
+        if exp_time > 0 and cur_time > exp_time:
             break
         wait_time = inv['start_time'] - cur_time
         if wait_time > 0:
