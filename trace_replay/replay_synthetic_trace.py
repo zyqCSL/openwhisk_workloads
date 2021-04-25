@@ -76,7 +76,7 @@ base_url = api_host + '/api/v1/namespaces/_/actions/'
 def http_worker(worker_trace, base_url, auth, exp_time):
     session = FuturesSession(max_workers=30)
     start_time = time.time()
-    for inv in enumerate(worker_trace):
+    for inv in worker_trace:
         cur_time = time.time() - start_time
         if cur_time > exp_time:
             break
