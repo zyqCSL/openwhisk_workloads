@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 # -----------------------------------------------------------------------
 parser = argparse.ArgumentParser()
 # parser.add_argument('--users', dest='users', type=int, required=True)
-parser.add_argument('--exp-time', dest='exp_time', type=str, required=True)
+parser.add_argument('--exp-time', dest='exp_time', type=str, default='')
 parser.add_argument('--workers', dest='workers', type=int, required=True)
 parser.add_argument('--func-trace', dest='func_trace', type=str, required=True)
 
@@ -35,7 +35,10 @@ def change_time(time_str):
 # -----------------------------------------------------------------------
 args = parser.parse_args()
 # users = args.users
-exp_time = change_time(args.exp_time)
+if args.exp_time != '':
+    exp_time = change_time(args.exp_time)
+else:
+    exp_time = -1
 num_workers = args.workers
 
 # -----------------------------------------------------------------------
