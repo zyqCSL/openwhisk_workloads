@@ -11,7 +11,7 @@ image_id = 0
 def unregister_copy_function(func_prefix, copies):
     global image_id
     for i in range(0, copies):
-        cmd = 'wsk action delete %s-%d' %(
+        cmd = 'wsk -i action delete %s-%d' %(
             func_prefix, i)
         subprocess.call(cmd, shell=True)
 
