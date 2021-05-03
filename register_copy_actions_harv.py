@@ -6,13 +6,16 @@ from pathlib import Path
 top_dir = Path.cwd() / 'functions'
 
 copies = 50
+image_id = 0 
 
 def register_copy_function(func_dir, func_prefix, func_src, image_prefix, copies, memory_mb):
+    global image_id
     os.chdir(str(func_dir))
     for i in range(0, copies):
-        cmd = 'wsk action create %s-%d %s --docker %s --web raw -i --memory %d' %(
-            func_prefix, i, func_src, image_prefix, memory_mb)
+        cmd = 'wsk action create %s-%d %s --docker %s-%d --web raw -i --memory %d' %(
+            func_prefix, i, func_src, image_prefix, image_id, memory_mb)
         subprocess.call(cmd, shell=True)
+        image_id += 1
 
 # os.chdir(str(top_dir / 'chameleon'))
 # cmd = 'wsk action create chameleon faas_chameleon.py --docker yz2297/chameleon_openwhisk --web raw -i --memory 256'
@@ -81,3 +84,5 @@ register_copy_function(func_dir = top_dir / 'ml_inference' / 'mobilenet',
     func_prefix='mobilenet', func_src='mobilenet.py',
     image_prefix='sailresearch/python3_openwhisk_unified', copies=copies, 
     memory_mb=1024)
+
+print('max image_id = %d' %(image_id - 1))
