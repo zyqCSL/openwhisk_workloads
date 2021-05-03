@@ -20,7 +20,7 @@ def unregister_copy_function(func_prefix, copies):
 # subprocess.call(cmd, shell=True)
 unregister_copy_function(func_prefix='chameleon', copies=copies)
 
-cmd = 'wsk action delete float_op'
+cmd = 'wsk -i action delete float_op'
 subprocess.call(cmd, shell=True)
 
 # os.chdir(str(top_dir / 'image_processing'))
