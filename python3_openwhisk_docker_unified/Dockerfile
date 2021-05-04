@@ -5,6 +5,7 @@ COPY requirements.txt requirements.txt
 RUN  apt-get update \
      # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
      && apt-get upgrade -y --no-install-recommends \
+     && apt-get install ffmpeg libsm6 libxext6 -y \
      # cleanup package lists, they are not used anymore in this image
      && rm -rf /var/lib/apt/lists/* \
      # We do not have mysql-server installed but mysql-common contains config files (/etc/mysql/my.cnf) for it.
