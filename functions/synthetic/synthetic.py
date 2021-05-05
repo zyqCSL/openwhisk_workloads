@@ -3,10 +3,13 @@ import random
 from time import time
 
 def compute(duration):
+    r = int(10000000 / 1.7 * duration)
     start = time()
     ctr = 0
-    while time() - start < duration:
-        ctr += random.randint(0, 100)
+    i = 0
+    while i < r:
+        ctr += 187 * 133
+        i += 1
     latency = time() - start
     return latency, ctr
 
