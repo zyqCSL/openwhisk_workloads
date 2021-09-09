@@ -1,6 +1,6 @@
 # Usage
 
-In order to register the functions, be sure to copy wsk (wsk_cli) to /usr/local/bin. 
+In order to register the functions, be sure to copy `wsk` (wsk_cli) to `/usr/local/bin`. 
 
 
 - chameleon
