@@ -1,6 +1,4 @@
-## Example Functions and Applications
-
-Register & Usage
+# Register & Usage
 
 In order to register serverless functions, be sure to copy wsk (wsk_cli) to /usr/local/bin. 
 
