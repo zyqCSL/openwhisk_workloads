@@ -45,13 +45,13 @@ In order to register the functions, be sure to copy wsk (wsk_cli) to /usr/local/
 	wsk action invoke pyaes -i -p length 10 -p iteration 10 -r -v
 	```
 
-- video_processing
+- video processing
 
 	```bash
 	wsk action create video_process video_process.py --docker yz2297/video_process_openwhisk --web raw -i
 	```
 
-- logistic_regression_review
+- logistic regression review
 
 	```bash
 	wsk action create lr_review lr_review.py --docker yz2297/lr_review_openwhisk --web raw -i
