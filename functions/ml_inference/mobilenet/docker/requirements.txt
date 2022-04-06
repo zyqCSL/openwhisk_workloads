@@ -20,7 +20,7 @@ requests == 2.22.0
 scrapy == 1.6.0
 simplejson == 3.16.0
 virtualenv == 16.7.1
-twisted == 20.3.0
+twisted == 22.2.0
 PyJWT == 1.7.1
 
 # packages for numerics
